@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Savoir Pratique – Formations et documents</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f6f2;--card:#fff;--ink:#14213d;--mute:#5b6479;--line:#dcdad0;--blue:#0b2e6b;--yel:#f5b700;--red:#c8102e;--ok:#0f7a4a;--warn:#fff3cd;--warnt:#5c4400;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1424;--card:#16203a;--ink:#eef1f8;--mute:#a3adc4;--line:#2a3658;--blue:#7fa6ff;--ok:#4fd18b;--warn:#3d3210;--warnt:#ffe08a}}
+:root[data-theme="dark"]{--bg:#0d1424;--card:#16203a;--ink:#eef1f8;--mute:#a3adc4;--line:#2a3658;--blue:#7fa6ff;--ok:#4fd18b;--warn:#3d3210;--warnt:#ffe08a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.5}
+.wrap{max-width:960px;margin:0 auto;padding:0 18px}
+header{border-bottom:4px solid var(--yel);background:#0b2e6b;color:#fff;padding:34px 0 30px}
+header h1{margin:0 0 8px;font-size:clamp(1.9rem,6vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1.05;max-width:16ch}
+header p{margin:0;max-width:46ch;color:#dbe4fa}
+.banner{background:var(--warn);color:var(--warnt);padding:10px 14px;border-radius:8px;margin-top:16px;font-size:.95rem}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:20px 0 14px}
+.tools input[type=search]{flex:1;min-width:180px}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:8px;padding:9px 12px;width:100%}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:999px;font:inherit;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+:root[data-theme="dark"] .tabs button[aria-pressed="true"],:root:not([data-theme="light"]) .tabs button[aria-pressed="true"]{color:#0d1424}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));padding-bottom:30px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.tag{align-self:flex-start;font-size:.8rem;font-weight:600;padding:2px 10px;border-radius:6px;background:var(--yel);color:#14213d}
+.card h2{margin:4px 0 0;font-size:1.15rem;line-height:1.25}
+.card p{margin:0;color:var(--mute);font-size:.95rem;flex:1}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:6px;gap:8px}
+.price{font-weight:800;font-size:1.2rem}
+.buy{background:var(--red);color:#fff;border:0;border-radius:8px;padding:10px 16px;font:inherit;font-weight:600;cursor:pointer}
+.buy[disabled]{opacity:.45;cursor:not-allowed}
+.empty{grid-column:1/-1;text-align:center;color:var(--mute);padding:30px 0}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
+dialog{border:0;border-radius:14px;padding:0;max-width:460px;width:calc(100% - 24px);max-height:92vh;overflow:auto;background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(5,10,25,.6)}
+dialog:not([open]){display:none}
+.dl{padding:20px}
+.dl h3{margin:0 0 2px;font-size:1.25rem}
+.sum{color:var(--mute);margin:0 0 14px}
+.op{display:flex;gap:8px;margin-bottom:12px}
+.op button{flex:1;padding:9px;border-radius:8px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;cursor:pointer}
+.op button[aria-pressed="true"]{border-color:var(--blue);background:var(--blue);color:#fff}
+ol{padding-left:20px;margin:0 0 14px}
+ol li{margin-bottom:6px}
+.num{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--bg);border:1.5px dashed var(--blue);border-radius:10px;padding:10px 14px;margin-bottom:10px}
+.num b{font-size:1.25rem;letter-spacing:.03em}
+.num small{display:block;color:var(--mute)}
+.ref{font-size:.95rem;margin:0 0 14px}
+.btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:8px;padding:12px;font:inherit;font-weight:600;cursor:pointer}
+.wa{background:var(--ok);color:#fff}
+:root[data-theme="dark"] .wa,:root:not([data-theme="light"]) .wa{color:#06180f}
+.cp{background:var(--blue);color:#fff;padding:8px 12px;width:auto}
+.close{background:none;color:var(--mute);margin-top:6px}
+.note{font-size:.85rem;color:var(--mute);margin:10px 0 0}
+label{display:block;font-size:.9rem;font-weight:600;margin:10px 0 4px}
+.plist{list-style:none;padding:0;margin:8px 0}
+.plist li{display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid var(--line);padding:6px 0;font-size:.92rem}
+.plist button{background:none;border:1.5px solid var(--red);color:var(--red);border-radius:6px;padding:3px 9px;cursor:pointer;font:inherit}
+.sec{background:var(--bg);margin:0 -20px;padding:4px 20px 14px;margin-top:14px}
+.stack{display:flex;gap:8px;margin-top:10px}
+.stack .btn{flex:1}
+.sub{background:var(--blue);color:#fff}
+.ghost{background:var(--bg);color:var(--ink);border:1.5px solid var(--line)}
+footer{border-top:1px solid var(--line);padding:18px 0 28px;color:var(--mute);font-size:.9rem}
+footer button{background:none;border:0;color:var(--mute);text-decoration:underline;cursor:pointer;font:inherit;padding:0;margin-top:8px}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Apprenez, payez par Mobile Money, recevez.</h1>
+<p>Documents, vidéos de formation et articles pratiques. Choisissez, payez depuis votre téléphone, recevez votre contenu sur WhatsApp.</p>
+<div class="banner" id="banner" hidden>Boutique en cours de configuration : les achats seront bientôt disponibles.</div>
+</div></header>
+
+<main class="wrap">
+<noscript><p class="banner">Ce site a besoin de JavaScript pour fonctionner. Activez-le dans votre navigateur.</p></noscript>
+<div class="tools"><input type="search" id="q" placeholder="Rechercher un article" aria-label="Rechercher un article"></div>
+<div class="tabs" id="tabs" role="group" aria-label="Filtrer par type"></div>
+<div class="grid" id="grid" aria-live="polite"></div>
+</main>
+
+<footer><div class="wrap" id="ft">Une question ? Écrivez-nous sur WhatsApp. Votre contenu est envoyé après vérification du paiement.</div></footer>
+
+<dialog id="dlg"><div class="dl">
+<h3 id="dT"></h3>
+<p class="sum" id="dS"></p>
+<div class="op" id="op"></div>
+<ol id="steps"></ol>
+<div class="num"><div><small>Numéro à créditer</small><b id="nV"></b><small id="nN"></small></div><button class="btn cp" id="cp" type="button">Copier</button></div>
+<p class="ref">Référence de commande : <b id="rf"></b></p>
+<a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">J'ai payé : envoyer la preuve</a>
+<button class="btn close" id="cl" type="button">Fermer</button>
+<p class="note">Après réception de votre capture ou de l'identifiant de transaction, le contenu vous est envoyé sur WhatsApp.</p>
+</div></dialog>
+
+<dialog id="pn"><div class="dl">
+<h3>Accès vendeur</h3>
+<p class="sum">Entrez votre code vendeur.</p>
+<label for="pC">Code</label><input id="pC" type="password" autocomplete="current-password">
+<p class="note" id="pE" role="alert" style="color:var(--red)"></p>
+<div class="stack"><button class="btn sub" id="pOk" type="button">Entrer</button><button class="btn ghost" id="pNo" type="button">Annuler</button></div>
+</div></dialog>
+
+<dialog id="ad"><div class="dl">
+<h3>Espace vendeur</h3>
+<p class="sum">Vos changements sont enregistrés sur cet appareil. Pour qu'ils s'appliquent à tous les visiteurs, touchez « Télécharger le site mis à jour » puis remplacez le fichier sur votre hébergement.</p>
+<label for="aN">Nom de la boutique</label><input id="aN">
+<label for="aW">Numéro WhatsApp (avec indicatif, ex. 235…)</label><input id="aW" inputmode="numeric">
+<label for="aA">Numéro Airtel Money</label><input id="aA" inputmode="tel">
+<label for="aM">Numéro Moov Money</label><input id="aM" inputmode="tel">
+<label for="aPin">Nouveau code vendeur (6 caractères minimum, vide = garder l'actuel)</label><input id="aPin" type="password" autocomplete="new-password">
+<div class="sec">
+<label>Articles actuels</label><ul class="plist" id="pl"></ul>
+<label for="pT">Ajouter un article</label>
+<select id="pTy"><option>Document</option><option>Vidéo</option><option>Article</option></select>
+<label for="pT">Titre</label><input id="pT">
+<label for="pD">Description</label><textarea id="pD" rows="2"></textarea>
+<label for="pP">Prix en FCFA</label><input id="pP" inputmode="numeric">
+<p class="note" id="aE" role="alert" style="color:var(--red)"></p>
+<div class="stack"><button class="btn ghost" id="pAdd" type="button">Ajouter</button></div>
+</div>
+<div class="stack"><button class="btn sub" id="aS" type="button">Enregistrer</button><button class="btn ghost" id="aC" type="button">Copier la configuration</button></div>
+<div class="stack"><button class="btn sub" id="aD" type="button">Télécharger le site mis à jour</button></div>
+<div class="stack"><button class="btn ghost" id="aR" type="button">Rétablir le modèle</button><button class="btn close" id="aX" type="button">Fermer</button></div>
+<p class="note">Ne mettez jamais le lien de téléchargement d'un contenu payant sur cette page : il serait visible de tous. Envoyez-le par WhatsApp après paiement.</p>
+</div></dialog>
+
+<script type="application/json" id="cfgdata">{"nom": "Hakim Ngueminan Aristide", "whatsapp": "23586993780", "numeros": {"Airtel Money": "86 99 37 80", "Moov Money": "9X XX XX XX"}, "produits": [{"id": "D01", "type": "Document", "titre": "Guide d'installation solaire (PDF)", "desc": "Schémas, calculs et erreurs à éviter pour une installation photovoltaïque.", "prix": 3000}, {"id": "V01", "type": "Vidéo", "titre": "Formation vidéo : tableau électrique", "desc": "Câblage pas à pas d'un tableau domestique, 45 minutes.", "prix": 7500}, {"id": "A01", "type": "Article", "titre": "Choisir ses batteries au Tchad", "desc": "Lithium ou plomb : coûts, durée de vie et entretien.", "prix": 1000}, {"id": "D02", "type": "Document", "titre": "Modèle de devis électricité (Excel)", "desc": "Fichier prêt à remplir, en FCFA, avec calculs automatiques.", "prix": 2500}], "pin": "f25d99367119faf1f9824954cd78a085d07c04eeb849ea5569976b6275a62c36", "v": 1}</script>
+<script>
+var KEY="boutique:cfg:v3";
+var DEFAULT=JSON.parse(document.getElementById("cfgdata").textContent);
+var $=function(i){return document.getElementById(i)};
+var digits=function(s){return String(s==null?"":s).replace(/\D/g,"")};
+var fmt=function(n){return Number(n).toLocaleString("fr-FR")+" FCFA"};
+var phoneOk=function(s){return digits(s).length>=8&&!/x/i.test(String(s))};
+var clone=function(o){return JSON.parse(JSON.stringify(o))};
+
+function sanitize(c){
+  var d=clone(DEFAULT);
+  if(!c||typeof c!=="object")return d;
+  var out={nom:typeof c.nom==="string"&&c.nom.trim()?c.nom.trim().slice(0,80):d.nom,
+    whatsapp:typeof c.whatsapp==="string"?c.whatsapp.trim().slice(0,20):d.whatsapp,
+    numeros:{},produits:[],pin:(typeof c.pin==="string"&&/^[0-9a-f]{64}$/.test(c.pin))?c.pin:d.pin,v:d.v};
+  Object.keys(d.numeros).forEach(function(k){
+    var v=c.numeros&&typeof c.numeros[k]==="string"?c.numeros[k].trim().slice(0,20):d.numeros[k];
+    out.numeros[k]=v;
+  });
+  if(Array.isArray(c.produits)){
+    c.produits.forEach(function(p,i){
+      if(!p||typeof p.titre!=="string"||!p.titre.trim())return;
+      var prix=Math.round(Number(p.prix));
+      if(!isFinite(prix)||prix<=0)return;
+      out.produits.push({id:String(p.id||"P"+i).slice(0,20),
+        type:["Document","Vidéo","Article"].indexOf(p.type)>-1?p.type:"Article",
+        titre:p.titre.trim().slice(0,120),desc:typeof p.desc==="string"?p.desc.trim().slice(0,300):"",prix:prix});
+    });
+  } else out.produits=d.produits;
+  return out;
+}
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s&&s.base===DEFAULT.v)return sanitize(s.cfg)}catch(e){}return clone(DEFAULT)}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({base:DEFAULT.v,cfg:cfg}));return true}catch(e){return false}}
+
+var cfg=load(), filtre="Tous", cur=null, op=null, ref="";
+
+function ops(){return Object.keys(cfg.numeros).filter(function(k){return phoneOk(cfg.numeros[k])})}
+function ready(){return phoneOk(cfg.whatsapp)&&ops().length>0}
+function el(t,cls,txt){var e=document.createElement(t);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function show(d){if(typeof d.showModal==="function"){if(!d.open)d.showModal()}else d.setAttribute("open","")}
+function hide(d){if(typeof d.close==="function")d.close();else d.removeAttribute("open")}
+
+function tabs(){
+  var types=["Tous"];
+  cfg.produits.forEach(function(p){if(types.indexOf(p.type)<0)types.push(p.type)});
+  if(types.indexOf(filtre)<0)filtre="Tous";
+  var box=$("tabs");box.textContent="";
+  types.forEach(function(t){
+    var b=el("button",null,t);b.type="button";
+    b.setAttribute("aria-pressed",String(t===filtre));
+    b.onclick=function(){filtre=t;tabs();grid()};
+    box.appendChild(b);
+  });
+}
+function grid(){
+  var g=$("grid");g.textContent="";
+  var q=$("q").value.trim().toLowerCase(),ok=ready(),n=0;
+  cfg.produits.forEach(function(p){
+    if(filtre!=="Tous"&&p.type!==filtre)return;
+    if(q&&(p.titre+" "+p.desc).toLowerCase().indexOf(q)<0)return;
+    n++;
+    var c=el("article","card");
+    c.appendChild(el("span","tag",p.type));
+    c.appendChild(el("h2",null,p.titre));
+    c.appendChild(el("p",null,p.desc));
+    var r=el("div","row");
+    r.appendChild(el("span","price",fmt(p.prix)));
+    var b=el("button","buy","Acheter");b.type="button";
+    if(!ok){b.disabled=true;b.title="Bientôt disponible"}
+    b.onclick=function(){openPay(p)};
+    r.appendChild(b);c.appendChild(r);g.appendChild(c);
+  });
+  if(!n)g.appendChild(el("p","empty",cfg.produits.length?"Aucun article ne correspond à votre recherche.":"Les articles arrivent bientôt."));
+  $("banner").hidden=ok;
+  document.title=cfg.nom+" – Formations et documents";
+}
+function newRef(){return "CMD-"+Date.now().toString(36).toUpperCase().slice(-5)+Math.random().toString(36).slice(2,4).toUpperCase()}
+function openPay(p){
+  if(!ready())return;
+  cur=p;ref=newRef();
+  var o=ops();if(o.indexOf(op)<0)op=o[0];
+  $("dT").textContent=p.titre;
+  $("dS").textContent="Montant à payer : "+fmt(p.prix);
+  $("rf").textContent=ref;
+  renderPay();show($("dlg"));
+}
+function renderPay(){
+  var box=$("op");box.textContent="";
+  ops().forEach(function(o){
+    var b=el("button",null,o);b.type="button";
+    b.setAttribute("aria-pressed",String(o===op));
+    b.onclick=function(){op=o;renderPay()};
+    box.appendChild(b);
+  });
+  var st=$("steps");st.textContent="";
+  ["Ouvrez le menu "+op+" sur votre téléphone.",
+   "Choisissez « Transfert d'argent » vers un numéro.",
+   "Entrez le numéro ci-dessous et le montant exact : "+fmt(cur.prix)+".",
+   "Validez avec votre code secret, puis gardez le SMS de confirmation.",
+   "Touchez le bouton vert pour nous envoyer la preuve."
+  ].forEach(function(t){st.appendChild(el("li",null,t))});
+  $("nV").textContent=cfg.numeros[op];
+  $("nN").textContent=op+" · "+cfg.nom;
+  var msg="Bonjour, j'ai payé "+fmt(cur.prix)+" par "+op+" pour : "+cur.titre+" (article "+cur.id+", réf. "+ref+"). Voici ma preuve de paiement.";
+  $("wa").href="https://wa.me/"+digits(cfg.whatsapp)+"?text="+encodeURIComponent(msg);
+}
+function copyText(t,btn,idle){
+  var done=function(ok){btn.textContent=ok?"Copié":"Copie impossible";setTimeout(function(){btn.textContent=idle},1600)};
+  var fallback=function(){
+    try{var a=document.createElement("textarea");a.value=t;a.style.position="fixed";a.style.opacity="0";
+      document.body.appendChild(a);a.select();var ok=document.execCommand("copy");document.body.removeChild(a);done(ok)}
+    catch(e){done(false)}
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true)},fallback)}else fallback();
+}
+$("cp").onclick=function(){copyText(cfg.numeros[op],$("cp"),"Copier")};
+$("cl").onclick=function(){hide($("dlg"))};
+$("q").oninput=grid;
+
+/* Espace vendeur */
+function fillAdmin(){
+  $("aN").value=cfg.nom;$("aW").value=cfg.whatsapp;
+  $("aA").value=cfg.numeros["Airtel Money"];$("aM").value=cfg.numeros["Moov Money"];
+  var l=$("pl");l.textContent="";
+  cfg.produits.forEach(function(p,i){
+    var li=el("li");li.appendChild(el("span",null,p.titre+" · "+fmt(p.prix)));
+    var b=el("button",null,"Supprimer");b.type="button";b.onclick=function(){cfg.produits.splice(i,1);fillAdmin();tabs();grid()};
+    li.appendChild(b);l.appendChild(li);
+  });
+  if(!cfg.produits.length)l.appendChild(el("li",null,"Aucun article."));
+}
+function readAdmin(){
+  cfg.nom=$("aN").value.trim()||DEFAULT.nom;
+  cfg.whatsapp=$("aW").value.trim();
+  cfg.numeros["Airtel Money"]=$("aA").value.trim();
+  cfg.numeros["Moov Money"]=$("aM").value.trim();
+}
+var unlocked=false;
+function sha(t){
+  if(!(window.crypto&&crypto.subtle))return Promise.reject(new Error("nocrypto"));
+  return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(function(b){
+    return Array.prototype.map.call(new Uint8Array(b),function(x){return ("0"+x.toString(16)).slice(-2)}).join("")});
+}
+function lockInfo(){try{return JSON.parse(localStorage.getItem("boutique:lock"))||{n:0,t:0}}catch(e){return{n:0,t:0}}}
+function setLock(o){try{localStorage.setItem("boutique:lock",JSON.stringify(o))}catch(e){}}
+function askPin(){$("pC").value="";$("pE").textContent="";show($("pn"));setTimeout(function(){$("pC").focus()},50)}
+function openAdmin(){$("aE").textContent="";fillAdmin();show($("ad"))}
+$("pNo").onclick=function(){hide($("pn"))};
+$("pOk").onclick=function(){
+  var L=lockInfo(),now=Date.now();
+  if(L.t>now){$("pE").textContent="Trop d'essais. Réessayez dans "+Math.ceil((L.t-now)/60000)+" min.";return}
+  sha($("pC").value).then(function(h){
+    if(h===cfg.pin){setLock({n:0,t:0});unlocked=true;hide($("pn"));openAdmin()}
+    else{L.n=(L.n||0)+1;if(L.n>=5){L.t=now+600000;L.n=0}setLock(L);$("pE").textContent="Code incorrect."}
+  },function(){$("pE").textContent="Ce navigateur ne permet pas la vérification. Utilisez un navigateur récent."});
+};
+$("pC").onkeydown=function(e){if(e.key==="Enter")$("pOk").click()};
+var taps=0,tt=null;
+$("ft").onclick=function(){taps++;clearTimeout(tt);tt=setTimeout(function(){taps=0},1500);if(taps>=5){taps=0;askPin()}};
+function chk(){if(location.hash==="#vendeur"){try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}askPin()}}
+window.addEventListener("hashchange",chk);chk();
+$("aX").onclick=function(){hide($("ad"))};
+$("pAdd").onclick=function(){
+  var t=$("pT").value.trim(),pr=Math.round(Number(digits($("pP").value)));
+  if(!t){$("aE").textContent="Écrivez un titre.";return}
+  if(!isFinite(pr)||pr<=0){$("aE").textContent="Indiquez un prix en FCFA supérieur à 0.";return}
+  $("aE").textContent="";
+  readAdmin();
+  cfg.produits.push({id:"P"+Date.now().toString(36).toUpperCase(),type:$("pTy").value,titre:t.slice(0,120),desc:$("pD").value.trim().slice(0,300),prix:pr});
+  $("pT").value="";$("pD").value="";$("pP").value="";
+  fillAdmin();tabs();grid();
+};
+$("aS").onclick=function(){
+  readAdmin();
+  var np=$("aPin").value;
+  var fin=function(){
+    cfg=sanitize(cfg);
+    var ok=save();
+    $("aE").textContent=ok?"Enregistré sur cet appareil.":"Enregistrement impossible sur ce navigateur. Téléchargez le site mis à jour à la place.";
+    $("aE").style.color=ok?"var(--ok)":"var(--red)";
+    tabs();grid();
+  };
+  if(np){
+    if(np.length<6){$("aE").textContent="Le code doit avoir au moins 6 caractères.";$("aE").style.color="var(--red)";return}
+    sha(np).then(function(h){cfg.pin=h;$("aPin").value="";fin()},function(){$("aE").textContent="Changement de code impossible sur ce navigateur.";$("aE").style.color="var(--red)"});
+  } else fin();
+};
+$("aD").onclick=function(){
+  readAdmin();cfg=sanitize(cfg);cfg.v=Date.now();
+  var c=document.documentElement.cloneNode(true);
+  ["grid","tabs","op","steps","pl"].forEach(function(i){var n=c.querySelector("#"+i);if(n)n.textContent=""});
+  c.querySelector("#cfgdata").textContent=JSON.stringify(cfg).replace(/</g,"\\u003c");
+  c.querySelectorAll("dialog").forEach(function(d){d.removeAttribute("open")});
+  var html="<!DOCTYPE html>\n"+c.outerHTML;
+  try{
+    var u=URL.createObjectURL(new Blob([html],{type:"text/html"}));
+    var a=document.createElement("a");a.href=u;a.download="boutique-contenus.html";
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(u)},4000);
+    $("aE").textContent="Fichier téléchargé. Remplacez l'ancien fichier sur votre hébergement.";$("aE").style.color="var(--ok)";
+  }catch(e){copyText(html,$("aD"),"Télécharger le site mis à jour")}
+};
+$("aC").onclick=function(){readAdmin();copyText(JSON.stringify(sanitize(cfg),null,1),$("aC"),"Copier la configuration")};
+$("aR").onclick=function(){
+  cfg=clone(DEFAULT);try{localStorage.removeItem(KEY)}catch(e){}
+  fillAdmin();tabs();grid();
+};
+tabs();grid();
+</script>
+</body>
+</html>
