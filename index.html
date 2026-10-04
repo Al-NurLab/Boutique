@@ -23,7 +23,8 @@ input,select,textarea{font:inherit;color:var(--ink);background:var(--card);borde
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .tabs button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:999px;font:inherit;cursor:pointer}
 .tabs button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
-:root[data-theme="dark"] .tabs button[aria-pressed="true"],:root:not([data-theme="light"]) .tabs button[aria-pressed="true"]{color:#0d1424}
+:root[data-theme="dark"] .tabs button[aria-pressed="true"]{color:#0d1424}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tabs button[aria-pressed="true"]{color:#0d1424}}
 .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));padding-bottom:30px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px}
 .tag{align-self:flex-start;font-size:.8rem;font-weight:600;padding:2px 10px;border-radius:6px;background:var(--yel);color:#14213d}
@@ -52,7 +53,8 @@ ol li{margin-bottom:6px}
 .ref{font-size:.95rem;margin:0 0 14px}
 .btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:8px;padding:12px;font:inherit;font-weight:600;cursor:pointer}
 .wa{background:var(--ok);color:#fff}
-:root[data-theme="dark"] .wa,:root:not([data-theme="light"]) .wa{color:#06180f}
+:root[data-theme="dark"] .wa{color:#06180f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .wa{color:#06180f}}
 .cp{background:var(--blue);color:#fff;padding:8px 12px;width:auto}
 .close{background:none;color:var(--mute);margin-top:6px}
 .note{font-size:.85rem;color:var(--mute);margin:10px 0 0}
@@ -60,11 +62,13 @@ label{display:block;font-size:.9rem;font-weight:600;margin:10px 0 4px}
 .plist{list-style:none;padding:0;margin:8px 0}
 .plist li{display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid var(--line);padding:6px 0;font-size:.92rem}
 .plist button{background:none;border:1.5px solid var(--red);color:var(--red);border-radius:6px;padding:3px 9px;cursor:pointer;font:inherit}
+.plist .ttl{flex:1;min-width:0}.plist input.pp{width:92px;padding:5px 8px;text-align:right;font-size:.92rem}.plist .fc{font-size:.8rem;opacity:.7}
 .sec{background:var(--bg);margin:0 -20px;padding:4px 20px 14px;margin-top:14px}
 .stack{display:flex;gap:8px;margin-top:10px}
 .stack .btn{flex:1}
 .sub{background:var(--blue);color:#fff}
 .ghost{background:var(--bg);color:var(--ink);border:1.5px solid var(--line)}
+.svc{margin:34px 0 8px;padding:20px;background:var(--card);border:1px solid var(--line);border-radius:12px}.svc h2{margin:0 0 4px;font-size:1.25rem}.svc>p{margin:0 0 12px;color:var(--mute)}.svcl{list-style:none;padding:0;margin:0 0 16px}.svcl li{border-bottom:1px solid var(--line);padding:10px 0}.svcl span{display:block;margin-top:2px;color:var(--mute);font-size:.9rem}
 footer{border-top:1px solid var(--line);padding:18px 0 28px;color:var(--mute);font-size:.9rem}
 footer button{background:none;border:0;color:var(--mute);text-decoration:underline;cursor:pointer;font:inherit;padding:0;margin-top:8px}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
@@ -82,6 +86,18 @@ footer button{background:none;border:0;color:var(--mute);text-decoration:underli
 <div class="tools"><input type="search" id="q" placeholder="Rechercher un article" aria-label="Rechercher un article"></div>
 <div class="tabs" id="tabs" role="group" aria-label="Filtrer par type"></div>
 <div class="grid" id="grid" aria-live="polite"></div>
+<section class="svc" id="services" aria-labelledby="svcT">
+<h2 id="svcT">Nos services</h2>
+<p>Contactez-nous pour une étude, un devis ou une intervention.</p>
+<ul class="svcl">
+<li><b>Électricité</b><span>Installation · Maintenance · Étude · Conception · Établissement des plans et schémas</span></li>
+<li><b>Électrotechnique</b><span>Installation · Maintenance · Étude · Conception · Établissement des plans et schémas</span></li>
+<li><b>Énergie solaire</b><span>Installation · Maintenance · Étude · Conception · Dimensionnement et devis</span></li>
+<li><b>Froid et climatisation</b><span>Installation · Maintenance · Étude · Conception · Dimensionnement et devis</span></li>
+<li><b>Formation</b><span>Formations pratiques dans nos domaines d'intervention</span></li>
+</ul>
+<a class="btn wa" id="ct" href="#" target="_blank" rel="noopener" hidden>Nous contacter sur WhatsApp</a>
+</section>
 </main>
 
 <footer><div class="wrap" id="ft">Une question ? Écrivez-nous sur WhatsApp. Votre contenu est envoyé après vérification du paiement.</div></footer>
@@ -115,9 +131,9 @@ footer button{background:none;border:0;color:var(--mute);text-decoration:underli
 <label for="aM">Numéro Moov Money</label><input id="aM" inputmode="tel">
 <label for="aPin">Nouveau code vendeur (6 caractères minimum, vide = garder l'actuel)</label><input id="aPin" type="password" autocomplete="new-password">
 <div class="sec">
-<label>Articles actuels</label><ul class="plist" id="pl"></ul>
+<label>Articles actuels</label><p class="note">Pour changer un prix, modifiez le montant puis touchez « Enregistrer ».</p><ul class="plist" id="pl"></ul>
 <label for="pT">Ajouter un article</label>
-<select id="pTy"><option>Document</option><option>Vidéo</option><option>Article</option></select>
+<select id="pTy"><option>Document</option><option>Vidéo</option><option>Article</option><option>Application</option><option>Service</option></select>
 <label for="pT">Titre</label><input id="pT">
 <label for="pD">Description</label><textarea id="pD" rows="2"></textarea>
 <label for="pP">Prix en FCFA</label><input id="pP" inputmode="numeric">
@@ -130,7 +146,7 @@ footer button{background:none;border:0;color:var(--mute);text-decoration:underli
 <p class="note">Ne mettez jamais le lien de téléchargement d'un contenu payant sur cette page : il serait visible de tous. Envoyez-le par WhatsApp après paiement.</p>
 </div></dialog>
 
-<script type="application/json" id="cfgdata">{"nom": "Hakim Ngueminan Aristide", "whatsapp": "23586993780", "numeros": {"Airtel Money": "86 99 37 80", "Moov Money": "9X XX XX XX"}, "produits": [{"id": "D01", "type": "Document", "titre": "Guide d'installation solaire (PDF)", "desc": "Schémas, calculs et erreurs à éviter pour une installation photovoltaïque.", "prix": 3000}, {"id": "V01", "type": "Vidéo", "titre": "Formation vidéo : tableau électrique", "desc": "Câblage pas à pas d'un tableau domestique, 45 minutes.", "prix": 7500}, {"id": "A01", "type": "Article", "titre": "Choisir ses batteries au Tchad", "desc": "Lithium ou plomb : coûts, durée de vie et entretien.", "prix": 1000}, {"id": "D02", "type": "Document", "titre": "Modèle de devis électricité (Excel)", "desc": "Fichier prêt à remplir, en FCFA, avec calculs automatiques.", "prix": 2500}], "pin": "f25d99367119faf1f9824954cd78a085d07c04eeb849ea5569976b6275a62c36", "v": 1}</script>
+<script type="application/json" id="cfgdata">{"nom": "Hakim Ngueminan Aristide", "whatsapp": "23586993780", "numeros": {"Airtel Money": "86 99 37 80", "Moov Money": "9X XX XX XX"}, "produits": [{"id": "D01", "type": "Document", "titre": "Guide d'installation solaire (PDF)", "desc": "Schémas, calculs et erreurs à éviter pour une installation photovoltaïque.", "prix": 499}, {"id": "V01", "type": "Vidéo", "titre": "Formation vidéo : tableau électrique", "desc": "Câblage pas à pas d'un tableau domestique, 45 minutes.", "prix": 599}, {"id": "A01", "type": "Article", "titre": "Choisir ses batteries au Tchad", "desc": "Lithium ou plomb : coûts, durée de vie et entretien.", "prix": 990}, {"id": "D02", "type": "Document", "titre": "Modèle de devis électricité (Excel)", "desc": "Fichier prêt à remplir, en FCFA, avec calculs automatiques.", "prix": 1000}, {"id": "AP01", "type": "Application", "titre": "Application de dimensionnement solaire rapide", "desc": "Entrez la puissance totale des charges et le nombre d'heures d'utilisation : obtenez un dimensionnement complet (panneaux, batteries, onduleur, câbles), un devis et un fichier PDF, Word ou Excel.", "prix": 2999}, {"id": "AP02", "type": "Application", "titre": "Application de dimensionnement solaire détaillé", "desc": "Saisissez chaque appareil avec sa puissance, sa quantité et ses heures d'utilisation. Calcul complet du système solaire, appareil par appareil, avec budget en FCFA.", "prix": 4999}, {"id": "AP03", "type": "Application", "titre": "Application de devis rapide et personnalisé", "desc": "Établissez vos devis en quelques minutes avec le logo et les informations de votre entreprise. Calculs automatiques en FCFA, prêts à présenter à vos clients.", "prix": 1999}, {"id": "S01", "type": "Service", "titre": "Conseil et orientation", "desc": "Échangez avec un électricien expérimenté sur WhatsApp : il vous guide dans votre projet solaire ou électrique (choix du matériel, dimensionnement, budget).", "prix": 1050}, {"id": "S02", "type": "Service", "titre": "Poser une question", "desc": "Une question technique sur le solaire ou l'électricité ? Posez-la gratuitement et recevez une réponse claire sur WhatsApp.", "prix": 0, "gratuit": true}], "pin": "afbb12851f32a3c16fe6dde8b5d7cfbbb475057bbcac571b0d671668bb654c60", "v": 1791156063414}</script>
 <script>
 var KEY="boutique:cfg:v3";
 var DEFAULT=JSON.parse(document.getElementById("cfgdata").textContent);
@@ -153,11 +169,11 @@ function sanitize(c){
   if(Array.isArray(c.produits)){
     c.produits.forEach(function(p,i){
       if(!p||typeof p.titre!=="string"||!p.titre.trim())return;
-      var prix=Math.round(Number(p.prix));
-      if(!isFinite(prix)||prix<=0)return;
+      var gr=p.gratuit===true,prix=Math.round(Number(p.prix));
+      if(gr)prix=0;else if(!isFinite(prix)||prix<=0)return;
       out.produits.push({id:String(p.id||"P"+i).slice(0,20),
-        type:["Document","Vidéo","Article"].indexOf(p.type)>-1?p.type:"Article",
-        titre:p.titre.trim().slice(0,120),desc:typeof p.desc==="string"?p.desc.trim().slice(0,300):"",prix:prix});
+        type:["Document","Vidéo","Article","Application","Service"].indexOf(p.type)>-1?p.type:"Article",
+        titre:p.titre.trim().slice(0,120),desc:typeof p.desc==="string"?p.desc.trim().slice(0,300):"",prix:prix,gratuit:gr});
     });
   } else out.produits=d.produits;
   return out;
@@ -197,6 +213,16 @@ function grid(){
     c.appendChild(el("h2",null,p.titre));
     c.appendChild(el("p",null,p.desc));
     var r=el("div","row");
+    if(p.gratuit){
+      r.appendChild(el("span","price","Gratuit"));
+      var f;
+      if(phoneOk(cfg.whatsapp)){
+        f=el("a","buy","Poser ma question");f.target="_blank";f.rel="noopener";
+        f.style.textDecoration="none";f.style.textAlign="center";
+        f.href="https://wa.me/"+digits(cfg.whatsapp)+"?text="+encodeURIComponent("Bonjour, j'ai une question : ");
+      } else {f=el("button","buy","Poser ma question");f.type="button";f.disabled=true;f.title="Bientôt disponible"}
+      r.appendChild(f);c.appendChild(r);g.appendChild(c);return;
+    }
     r.appendChild(el("span","price",fmt(p.prix)));
     var b=el("button","buy","Acheter");b.type="button";
     if(!ok){b.disabled=true;b.title="Bientôt disponible"}
@@ -205,6 +231,11 @@ function grid(){
   });
   if(!n)g.appendChild(el("p","empty",cfg.produits.length?"Aucun article ne correspond à votre recherche.":"Les articles arrivent bientôt."));
   $("banner").hidden=ok;
+  var ct=$("ct");
+  if(phoneOk(cfg.whatsapp)){
+    ct.href="https://wa.me/"+digits(cfg.whatsapp)+"?text="+encodeURIComponent("Bonjour, je souhaite des informations sur vos services.");
+    ct.hidden=false;
+  } else ct.hidden=true;
   document.title=cfg.nom+" – Formations et documents";
 }
 function newRef(){return "CMD-"+Date.now().toString(36).toUpperCase().slice(-5)+Math.random().toString(36).slice(2,4).toUpperCase()}
@@ -256,17 +287,33 @@ function fillAdmin(){
   $("aA").value=cfg.numeros["Airtel Money"];$("aM").value=cfg.numeros["Moov Money"];
   var l=$("pl");l.textContent="";
   cfg.produits.forEach(function(p,i){
-    var li=el("li");li.appendChild(el("span",null,p.titre+" · "+fmt(p.prix)));
-    var b=el("button",null,"Supprimer");b.type="button";b.onclick=function(){cfg.produits.splice(i,1);fillAdmin();tabs();grid()};
+    var li=el("li");li.appendChild(el("span","ttl",p.titre));
+    if(p.gratuit){li.appendChild(el("span","fc","Gratuit"))}
+    else{
+      var inp=el("input","pp");inp.type="text";inp.inputMode="numeric";inp.value=p.prix;inp.dataset.i=i;
+      inp.setAttribute("aria-label","Prix en FCFA : "+p.titre);
+      li.appendChild(inp);li.appendChild(el("span","fc","FCFA"));
+    }
+    var b=el("button",null,"Supprimer");b.type="button";b.onclick=function(){readPrices();cfg.produits.splice(i,1);fillAdmin();tabs();grid()};
     li.appendChild(b);l.appendChild(li);
   });
   if(!cfg.produits.length)l.appendChild(el("li",null,"Aucun article."));
+}
+function readPrices(){
+  var ok=true;
+  document.querySelectorAll("#pl input.pp").forEach(function(n){
+    var i=Number(n.dataset.i),v=Math.round(Number(digits(n.value)));
+    if(!cfg.produits[i])return;
+    if(isFinite(v)&&v>0)cfg.produits[i].prix=v;else ok=false;
+  });
+  return ok;
 }
 function readAdmin(){
   cfg.nom=$("aN").value.trim()||DEFAULT.nom;
   cfg.whatsapp=$("aW").value.trim();
   cfg.numeros["Airtel Money"]=$("aA").value.trim();
   cfg.numeros["Moov Money"]=$("aM").value.trim();
+  return readPrices();
 }
 var unlocked=false;
 function sha(t){
@@ -304,7 +351,7 @@ $("pAdd").onclick=function(){
   fillAdmin();tabs();grid();
 };
 $("aS").onclick=function(){
-  readAdmin();
+  if(!readAdmin()){$("aE").textContent="Un des prix est vide ou égal à 0. Corrigez-le (en FCFA) avant d'enregistrer.";$("aE").style.color="var(--red)";return}
   var np=$("aPin").value;
   var fin=function(){
     cfg=sanitize(cfg);
